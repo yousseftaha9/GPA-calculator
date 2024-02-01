@@ -1,13 +1,150 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.container {
+  margin: 1rem;
+  border-radius: 20px;
+  background-color: orange;
+  position: relative;
+  padding: 1rem;
+}
+
+.title {
+  /* margin: 1rem; */
+  text-align: center;
+}
+
+.grade {
+  width: 55px;
+  margin: 0.5rem;
+}
+
+.addButton,
+.addSubject,
+.calculate,
+.reset {
+  margin: 1.5rem;
+  margin-left: 5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+}
+.reset {
+  margin: 0;
+}
+
+.addButton:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.addSubject {
+  margin: 0.5rem;
+}
+
+.addSubject:hover,
+.calculate:hover,
+.reset:hover {
+  background-color: white;
+  color: black;
+}
+
+label {
+  margin: 1rem;
+}
+
+input,
+select {
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  padding: 0.2rem;
+}
+
+.close {
+  display: block;
+  margin: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  font-size: 1.5rem;
+}
+
+.end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+li {
+  list-style: none;
+  margin: 1rem;
+}
+
+.close:hover {
+  color: white;
+}
+
+span {
+  color: rgb(75, 5, 189);
+}
+
+.numSubjects,
+.calculate {
+  margin: 1rem;
+}
+
+.result {
+  margin-left: 1rem;
+}
+
+.message {
+  margin: 1rem;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: rgb(75, 5, 189);
+  width: 40ch;
+}
+
+.removeSubject {
+  background-color: rgb(252, 252, 252);
+  outline: none;
+  border: none;
+  transition: 0.33s;
+  padding: 0.15rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.removeSubject:hover {
+  background-color: rgb(245, 82, 82);
+}
+/* 
+form {
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+} */
