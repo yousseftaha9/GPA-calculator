@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/GPA-calculator/static/css/main.8809ef25.css",
+    "main.js": "/GPA-calculator/static/js/main.004e1c4d.js",
+    "index.html": "/GPA-calculator/index.html",
+    "main.8809ef25.css.map": "/GPA-calculator/static/css/main.8809ef25.css.map",
+    "main.004e1c4d.js.map": "/GPA-calculator/static/js/main.004e1c4d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8809ef25.css",
+    "static/js/main.004e1c4d.js"
+  ]
+}
