@@ -1,12 +1,19 @@
-import { useState } from "react";
-let initialSubjects = [];
+import { useEffect, useState } from "react";
 export default function App() {
-  const [subjects, setSubjects] = useState(initialSubjects);
+  const [subjects, setSubjects] = useState([]);
   const [render, setRender] = useState(subjects.length);
   const [isOpen, setIsOpen] = useState(false);
+
+  // useEffect(function () {
+  //   const savedSubjects = localStorage.getItem("subjects");
+  //   console.log(savedSubjects);
+  //   if (savedSubjects) {
+  //     setSubjects(JSON.parse(savedSubjects));
+  //   }
+  // }, []);
   return (
     <div className="container">
-      <Title />
+      <Title isOpen={isOpen} setIsOpen={setIsOpen} />
       <AddSubject
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -33,8 +40,29 @@ export default function App() {
   );
 }
 
-function Title() {
-  return <h1 className="title"> GPA calculator</h1>;
+function Title({ isOpen, setIsOpen }) {
+  function handleClose() {
+    setIsOpen(!isOpen);
+  }
+  function handleAdd() {
+    setIsOpen(!isOpen);
+  }
+  return (
+    <div className="head">
+      <h1 className="title"> GPA calculator</h1>
+      {isOpen ? (
+        <div className="end">
+          <p className="close" onClick={handleClose}>
+            ✖
+          </p>
+        </div>
+      ) : (
+        <button className="addButton" onClick={handleAdd}>
+          Add Subjects
+        </button>
+      )}
+    </div>
+  );
 }
 
 function AddSubject({
@@ -57,27 +85,23 @@ function AddSubject({
       gpa: grade,
       hours: hours,
     };
+
+    if (subject === "") {
+      input.name = "Not specified";
+    }
+
     setIndex(index + 1);
     setSubjects([...subjects, input]);
+    // localStorage.setItem("subjects", JSON.stringify(subjects));
     setSubject("");
     setGrade(0.7);
     setHours(1);
     setRender(render + 1);
   }
-  function handleClose() {
-    setIsOpen(!isOpen);
-  }
-  function handleAdd() {
-    setIsOpen(!isOpen);
-  }
-  return isOpen ? (
-    <div>
-      <div className="end">
-        <p className="close" onClick={handleClose}>
-          ✖
-        </p>
-      </div>
+  if (!isOpen) return;
 
+  return (
+    <div>
       <form>
         <label className="subject">Subject</label>
 
@@ -127,16 +151,13 @@ function AddSubject({
         </button>
       </form>
     </div>
-  ) : (
-    <button className="addButton" onClick={handleAdd}>
-      Add Subjects
-    </button>
   );
 }
 
 function Display({ subjects, render, setSubjects }) {
   function handleRemove(id) {
     setSubjects((subjects) => subjects.filter((subject) => subject.id !== id));
+    // localStorage.setItem("subjects", JSON.stringify(subjects));
   }
   return (
     <div>
@@ -151,7 +172,7 @@ function Display({ subjects, render, setSubjects }) {
               className="removeSubject"
               onClick={() => handleRemove(element.id)}
             >
-              remove
+              ✖
             </button>
           </li>
         ))}
@@ -176,8 +197,9 @@ function Calculate({ subjects, setSubjects, setRender }) {
       factors += subjects[i].gpa * subjects[i].hours;
       totalCredits += parseInt(subjects[i].hours);
     }
-
-    setGpa(factors / totalCredits);
+    let gpaCalc = factors / totalCredits;
+    let roundedNumber = parseFloat(gpaCalc.toFixed(2));
+    setGpa(roundedNumber);
   }
 
   function handleReset(e) {
@@ -185,6 +207,7 @@ function Calculate({ subjects, setSubjects, setRender }) {
     setSubjects([]);
     setRender(0);
     setGpa(0);
+    // localStorage.removeItem("subjects");
   }
   if (subjects.length === 0) return;
   return (

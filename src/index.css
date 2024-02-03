@@ -15,8 +15,15 @@ body {
   margin: 1rem;
   border-radius: 20px;
   background-color: orange;
-  position: relative;
   padding: 1rem;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .title {
@@ -24,18 +31,22 @@ body {
   text-align: center;
 }
 
-.grade {
-  width: 55px;
-  margin: 0.5rem;
-}
-
-.addButton,
 .addSubject,
 .calculate,
 .reset {
   margin: 1.5rem;
   margin-left: 5rem;
   outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+}
+.addButton {
+  /* margin-left: 5rem; */
+  /* outline: none; */
   border: none;
   cursor: pointer;
   border-radius: 12px;
@@ -119,28 +130,31 @@ span {
   font-size: 1.75rem;
   font-weight: 800;
   color: rgb(75, 5, 189);
-  width: 40ch;
+  max-width: 40ch;
 }
 
 .removeSubject {
-  background-color: rgb(252, 252, 252);
+  background-color: transparent;
   outline: none;
-  border: none;
+  /* border: none; */
   transition: 0.33s;
-  padding: 0.15rem;
-  margin: 0.25rem;
+  /* padding: 0.15rem; */
+  padding: 0 0.25rem;
+  margin-left: 0.5rem;
   cursor: pointer;
-  border-radius: 7px;
+  border-radius: 5px;
 }
 
 .removeSubject:hover {
   background-color: rgb(245, 82, 82);
 }
-/* 
-form {
-  display: flex;
-  flex-direction: column;
-} */
+
+@media screen and (max-width: 690px) {
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 /* .head {
   display: flex;
