@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function App() {
   const [subjects, setSubjects] = useState([]);
   const [render, setRender] = useState(subjects.length);
