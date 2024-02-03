@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/GPA-calculator/static/css/main.55c504fd.css",
+    "main.css": "/GPA-calculator/static/css/main.86beed19.css",
     "main.js": "/GPA-calculator/static/js/main.fbc14f76.js",
     "index.html": "/GPA-calculator/index.html",
-    "main.55c504fd.css.map": "/GPA-calculator/static/css/main.55c504fd.css.map",
+    "main.86beed19.css.map": "/GPA-calculator/static/css/main.86beed19.css.map",
     "main.fbc14f76.js.map": "/GPA-calculator/static/js/main.fbc14f76.js.map"
   },
   "entrypoints": [
-    "static/css/main.55c504fd.css",
+    "static/css/main.86beed19.css",
     "static/js/main.fbc14f76.js"
   ]
 }
