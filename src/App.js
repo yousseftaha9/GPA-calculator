@@ -1,6 +1,171 @@
 import { useState } from "react";
+
+const initState = [
+  {
+    id: 1,
+    name: "math 1",
+    gpa: 1,
+    hours: 8,
+  },
+  {
+    id: 2,
+    name: "AS",
+    gpa: 2,
+    hours: 2,
+  },
+  {
+    id: 3,
+    name: "chemistry",
+    gpa: 2.3,
+    hours: 4,
+  },
+  {
+    id: 4,
+    name: "physics 1",
+    gpa: 0.7,
+    hours: 5,
+  },
+  {
+    id: 5,
+    name: "Cs 1",
+    gpa: 1,
+    hours: 6,
+  },
+  {
+    id: 6,
+    name: "drawing",
+    gpa: 1,
+    hours: 3,
+  },
+  {
+    id: 7,
+    name: "sm",
+    gpa: 2.3,
+    hours: 1,
+  },
+  {
+    id: 8,
+    name: "math 2",
+    gpa: 2.7,
+    hours: 8,
+  },
+  {
+    id: 9,
+    name: "production",
+    gpa: 1.7,
+    hours: 3,
+  },
+  {
+    id: 10,
+    name: "Cs 2",
+    gpa: 1,
+    hours: 6,
+  },
+  {
+    id: 11,
+    name: "DLD",
+    gpa: 2,
+    hours: 4,
+  },
+  {
+    id: 12,
+    name: "physics 2",
+    gpa: 1.3,
+    hours: 5,
+  },
+  {
+    id: 13,
+    name: "chem lab",
+    gpa: 0.7,
+    hours: 2,
+  },
+  {
+    id: 14,
+    name: "math 3",
+    gpa: 2,
+    hours: 8,
+  },
+  {
+    id: 15,
+    name: "cps",
+    gpa: 2,
+    hours: 1,
+  },
+  {
+    id: 16,
+    name: "cs3",
+    gpa: 1.3,
+    hours: 6,
+  },
+  {
+    id: 17,
+    name: "circuits1",
+    gpa: 2,
+    hours: 6,
+  },
+  {
+    id: 18,
+    name: "physics 3",
+    gpa: 1.3,
+    hours: 5,
+  },
+  {
+    id: 19,
+    name: "physics lab",
+    gpa: 0.7,
+    hours: 2,
+  },
+  {
+    id: 20,
+    name: "rpw",
+    gpa: 2,
+    hours: 1,
+  },
+  {
+    id: 21,
+    name: "concepts",
+    gpa: 1.3,
+    hours: 4,
+  },
+  {
+    id: 22,
+    name: "co",
+    gpa: 1.7,
+    hours: 4,
+  },
+  {
+    id: 22,
+    name: "math 4",
+    gpa: 2,
+    hours: 4,
+  },
+  {
+    id: 22,
+    name: "circuits 2",
+    gpa: 1.7,
+    hours: 6,
+  },
+  {
+    id: 22,
+    name: "cs 4",
+    gpa: 0.7,
+    hours: 4,
+  },
+  {
+    id: 22,
+    name: "signals",
+    gpa: 2,
+    hours: 6,
+  },
+  {
+    id: 22,
+    name: "german 4",
+    gpa: 1.7,
+    hours: 8,
+  },
+];
 export default function App() {
-  const [subjects, setSubjects] = useState([]);
+  const [subjects, setSubjects] = useState(initState);
   const [render, setRender] = useState(subjects.length);
   const [isOpen, setIsOpen] = useState(false);
 
