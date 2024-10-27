@@ -134,31 +134,31 @@ const initState = [
     hours: 4,
   },
   {
-    id: 22,
+    id: 23,
     name: "math 4",
     gpa: 2,
     hours: 4,
   },
   {
-    id: 22,
+    id: 24,
     name: "circuits 2",
     gpa: 1.7,
     hours: 6,
   },
   {
-    id: 22,
+    id: 25,
     name: "cs 4",
     gpa: 0.7,
     hours: 4,
   },
   {
-    id: 22,
+    id: 26,
     name: "signals",
     gpa: 2,
     hours: 6,
   },
   {
-    id: 22,
+    id: 27,
     name: "german 4",
     gpa: 1.7,
     hours: 8,
@@ -241,7 +241,7 @@ function AddSubject({
   const [subject, setSubject] = useState("");
   const [grade, setGrade] = useState(0.7);
   const [hours, setHours] = useState(1);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(28);
   function handleClick(e) {
     e.preventDefault();
     const input = {
