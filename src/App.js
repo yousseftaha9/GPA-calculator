@@ -241,7 +241,7 @@ function AddSubject({
   const [subject, setSubject] = useState("");
   const [grade, setGrade] = useState(0.7);
   const [hours, setHours] = useState(1);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(28);
   function handleClick(e) {
     e.preventDefault();
     const input = {
@@ -255,7 +255,7 @@ function AddSubject({
       input.name = "Not specified";
     }
 
-    setIndex(index + 1);
+    setIndex(index=>index + 1); 
     setSubjects([...subjects, input]);
     // localStorage.setItem("subjects", JSON.stringify(subjects));
     setSubject("");
