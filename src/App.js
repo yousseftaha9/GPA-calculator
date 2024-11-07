@@ -134,31 +134,31 @@ const initState = [
     hours: 4,
   },
   {
-    id: 22,
+    id: 23,
     name: "math 4",
     gpa: 2,
     hours: 4,
   },
   {
-    id: 22,
+    id: 24,
     name: "circuits 2",
     gpa: 1.7,
     hours: 6,
   },
   {
-    id: 22,
+    id: 25,
     name: "cs 4",
     gpa: 0.7,
     hours: 4,
   },
   {
-    id: 22,
+    id: 26,
     name: "signals",
     gpa: 2,
     hours: 6,
   },
   {
-    id: 22,
+    id: 27,
     name: "german 4",
     gpa: 1.7,
     hours: 8,
@@ -328,7 +328,7 @@ function Display({ subjects, render, setSubjects }) {
     <div>
       <ul>
         {subjects.map((element) => (
-          <li key={element.name}>
+          <li key={element.id}>
             <span> Subject: </span>
             {element.name} <span>Credit Hours: </span>
             {element.hours} <span>Grade: </span> {element.gpa}
