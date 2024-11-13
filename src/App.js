@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//test change
 const initState = [
   {
     id: 1,
@@ -255,7 +255,7 @@ function AddSubject({
       input.name = "Not specified";
     }
 
-    setIndex(index=>index + 1); 
+    setIndex((index) => index + 1);
     setSubjects([...subjects, input]);
     // localStorage.setItem("subjects", JSON.stringify(subjects));
     setSubject("");
