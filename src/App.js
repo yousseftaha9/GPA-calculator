@@ -163,6 +163,42 @@ const initState = [
     gpa: 1.7,
     hours: 8,
   },
+  {
+    id: 28,
+    name: "db1",
+    gpa: 1,
+    hours:4,
+  },
+  {
+    id: 29,
+    name: "netw",
+    gpa: 1,
+    hours: 4,
+  },
+  {
+    id: 30,
+    name: "dsd",
+    gpa: 1,
+    hours: 4,
+  },
+  {
+    id: 31,
+    name: "theory",
+    gpa: 1.7,
+    hours: 6,
+  },
+  {
+    id: 32,
+    name: "mediA",
+    gpa: 1.7,
+    hours: 4,
+  },
+  {
+    id: 27,
+    name: "math",
+    gpa: 3,
+    hours: 4,
+  },
 ];
 //redeploy
 
