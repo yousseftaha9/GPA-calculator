@@ -1,219 +1,56 @@
-import { useState } from "react";
-//test change
-const initState = [
-  {
-    id: 1,
-    name: "math 1",
-    gpa: 1,
-    hours: 8,
-  },
-  {
-    id: 2,
-    name: "AS",
-    gpa: 2,
-    hours: 2,
-  },
-  {
-    id: 3,
-    name: "chemistry",
-    gpa: 2.3,
-    hours: 4,
-  },
-  {
-    id: 4,
-    name: "physics 1",
-    gpa: 0.7,
-    hours: 5,
-  },
-  {
-    id: 5,
-    name: "Cs 1",
-    gpa: 1,
-    hours: 6,
-  },
-  {
-    id: 6,
-    name: "drawing",
-    gpa: 1,
-    hours: 3,
-  },
-  {
-    id: 7,
-    name: "sm",
-    gpa: 2.3,
-    hours: 1,
-  },
-  {
-    id: 8,
-    name: "math 2",
-    gpa: 2.7,
-    hours: 8,
-  },
-  {
-    id: 9,
-    name: "production",
-    gpa: 1.7,
-    hours: 3,
-  },
-  {
-    id: 10,
-    name: "Cs 2",
-    gpa: 1,
-    hours: 6,
-  },
-  {
-    id: 11,
-    name: "DLD",
-    gpa: 2,
-    hours: 4,
-  },
-  {
-    id: 12,
-    name: "physics 2",
-    gpa: 1.3,
-    hours: 5,
-  },
-  {
-    id: 13,
-    name: "chem lab",
-    gpa: 0.7,
-    hours: 2,
-  },
-  {
-    id: 14,
-    name: "math 3",
-    gpa: 2,
-    hours: 8,
-  },
-  {
-    id: 15,
-    name: "cps",
-    gpa: 2,
-    hours: 1,
-  },
-  {
-    id: 16,
-    name: "cs3",
-    gpa: 1.3,
-    hours: 6,
-  },
-  {
-    id: 17,
-    name: "circuits1",
-    gpa: 2,
-    hours: 6,
-  },
-  {
-    id: 18,
-    name: "physics 3",
-    gpa: 1.3,
-    hours: 5,
-  },
-  {
-    id: 19,
-    name: "physics lab",
-    gpa: 0.7,
-    hours: 2,
-  },
-  {
-    id: 20,
-    name: "rpw",
-    gpa: 2,
-    hours: 1,
-  },
-  {
-    id: 21,
-    name: "concepts",
-    gpa: 1.3,
-    hours: 4,
-  },
-  {
-    id: 22,
-    name: "co",
-    gpa: 1.7,
-    hours: 4,
-  },
-  {
-    id: 23,
-    name: "math 4",
-    gpa: 2,
-    hours: 4,
-  },
-  {
-    id: 24,
-    name: "circuits 2",
-    gpa: 1.7,
-    hours: 6,
-  },
-  {
-    id: 25,
-    name: "cs 4",
-    gpa: 0.7,
-    hours: 4,
-  },
-  {
-    id: 26,
-    name: "signals",
-    gpa: 2,
-    hours: 6,
-  },
-  {
-    id: 27,
-    name: "german 4",
-    gpa: 1.7,
-    hours: 8,
-  },
-  {
-    id: 28,
-    name: "db1",
-    gpa: 1,
-    hours:4,
-  },
-  {
-    id: 29,
-    name: "netw",
-    gpa: 1,
-    hours: 4,
-  },
-  {
-    id: 30,
-    name: "dsd",
-    gpa: 1,
-    hours: 4,
-  },
-  {
-    id: 31,
-    name: "theory",
-    gpa: 1.7,
-    hours: 6,
-  },
-  {
-    id: 32,
-    name: "mediA",
-    gpa: 1.7,
-    hours: 4,
-  },
-  {
-    id: 27,
-    name: "math",
-    gpa: 3,
-    hours: 4,
-  },
+import { useEffect, useState } from "react";
+
+// Get subjects from localStorage or fallback to default
+const getInitialSubjects = () => {
+  const stored = localStorage.getItem("subjects");
+  return stored ? JSON.parse(stored) : defaultSubjects;
+};
+
+const defaultSubjects = [
+  { id: 1, name: "math 1", gpa: 1, hours: 8 },
+  { id: 2, name: "AS", gpa: 2, hours: 2 },
+  { id: 3, name: "chemistry", gpa: 2.3, hours: 4 },
+  { id: 4, name: "physics 1", gpa: 0.7, hours: 5 },
+  { id: 5, name: "Cs 1", gpa: 1, hours: 6 },
+  { id: 6, name: "drawing", gpa: 1, hours: 3 },
+  { id: 7, name: "sm", gpa: 2.3, hours: 1 },
+  { id: 8, name: "math 2", gpa: 2.7, hours: 8 },
+  { id: 9, name: "production", gpa: 1.7, hours: 3 },
+  { id: 10, name: "Cs 2", gpa: 1, hours: 6 },
+  { id: 11, name: "DLD", gpa: 2, hours: 4 },
+  { id: 12, name: "physics 2", gpa: 1.3, hours: 5 },
+  { id: 13, name: "chem lab", gpa: 0.7, hours: 2 },
+  { id: 14, name: "math 3", gpa: 2, hours: 8 },
+  { id: 15, name: "cps", gpa: 2, hours: 1 },
+  { id: 16, name: "cs3", gpa: 1.3, hours: 6 },
+  { id: 17, name: "circuits1", gpa: 2, hours: 6 },
+  { id: 18, name: "physics 3", gpa: 1.3, hours: 5 },
+  { id: 19, name: "physics lab", gpa: 0.7, hours: 2 },
+  { id: 20, name: "rpw", gpa: 2, hours: 1 },
+  { id: 21, name: "concepts", gpa: 1.3, hours: 4 },
+  { id: 22, name: "co", gpa: 1.7, hours: 4 },
+  { id: 23, name: "math 4", gpa: 2, hours: 4 },
+  { id: 24, name: "circuits 2", gpa: 1.7, hours: 6 },
+  { id: 25, name: "cs 4", gpa: 0.7, hours: 4 },
+  { id: 26, name: "signals", gpa: 2, hours: 6 },
+  { id: 27, name: "german 4", gpa: 1.7, hours: 8 },
+  { id: 28, name: "db1", gpa: 1, hours: 4 },
+  { id: 29, name: "netw", gpa: 1, hours: 4 },
+  { id: 30, name: "dsd", gpa: 1, hours: 4 },
+  { id: 31, name: "theory", gpa: 1.7, hours: 6 },
+  { id: 32, name: "media", gpa: 1.7, hours: 4 },
+  { id: 33, name: "math", gpa: 3, hours: 4 },
 ];
-//redeploy
 
 export default function App() {
-  const [subjects, setSubjects] = useState(initState);
+  const [subjects, setSubjects] = useState(getInitialSubjects);
   const [render, setRender] = useState(subjects.length);
   const [isOpen, setIsOpen] = useState(false);
 
-  // useEffect(function () {
-  //   const savedSubjects = localStorage.getItem("subjects");
-  //   console.log(savedSubjects);
-  //   if (savedSubjects) {
-  //     setSubjects(JSON.parse(savedSubjects));
-  //   }
-  // }, []);
+  useEffect(() => {
+    localStorage.setItem("subjects", JSON.stringify(subjects));
+  }, [subjects]);
+
   return (
     <div className="container">
       <Title isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -244,23 +81,17 @@ export default function App() {
 }
 
 function Title({ isOpen, setIsOpen }) {
-  function handleClose() {
-    setIsOpen(!isOpen);
-  }
-  function handleAdd() {
-    setIsOpen(!isOpen);
-  }
   return (
     <div className="head">
-      <h1 className="title"> GPA calculator</h1>
+      <h1 className="title">GPA Calculator</h1>
       {isOpen ? (
         <div className="end">
-          <p className="close" onClick={handleClose}>
+          <p className="close" onClick={() => setIsOpen(false)}>
             ✖
           </p>
         </div>
       ) : (
-        <button className="addButton" onClick={handleAdd}>
+        <button className="addButton" onClick={() => setIsOpen(true)}>
           Add Subjects
         </button>
       )}
@@ -279,47 +110,43 @@ function AddSubject({
   const [subject, setSubject] = useState("");
   const [grade, setGrade] = useState(0.7);
   const [hours, setHours] = useState(1);
-  const [index, setIndex] = useState(28);
+
+  // Dynamically calculate next ID
+  const getNextId = () =>
+    Math.max(0, ...subjects.map((s) => s.id || 0)) + 1;
+
   function handleClick(e) {
     e.preventDefault();
     const input = {
-      id: index,
-      name: subject,
+      id: getNextId(),
+      name: subject === "" ? "Not specified" : subject,
       gpa: grade,
       hours: hours,
     };
-
-    if (subject === "") {
-      input.name = "Not specified";
-    }
-
-    setIndex((index) => index + 1);
     setSubjects([...subjects, input]);
-    // localStorage.setItem("subjects", JSON.stringify(subjects));
     setSubject("");
     setGrade(0.7);
     setHours(1);
     setRender(render + 1);
   }
-  if (!isOpen) return;
+
+  if (!isOpen) return null;
 
   return (
     <div>
       <form>
         <label className="subject">Subject</label>
-
         <input
-          required
           type="text"
           placeholder="Math"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-        ></input>
+        />
         <label className="grade">Grade</label>
         <select
           id="grade"
           value={grade}
-          onChange={(e) => setGrade(e.target.value)}
+          onChange={(e) => setGrade(Number(e.target.value))}
         >
           <option value="0.7">0.7 (A+)</option>
           <option value="1.0">1.0 (A)</option>
@@ -336,18 +163,15 @@ function AddSubject({
         </select>
         <label className="hours">Hours</label>
         <select
-          id="grade"
+          id="hours"
           value={hours}
-          onChange={(e) => setHours(e.target.value)}
+          onChange={(e) => setHours(Number(e.target.value))}
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
+          {[...Array(8)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
         </select>
         <button onClick={handleClick} className="addSubject">
           Add
@@ -359,18 +183,16 @@ function AddSubject({
 
 function Display({ subjects, render, setSubjects }) {
   function handleRemove(id) {
-    setSubjects((subjects) => subjects.filter((subject) => subject.id !== id));
-    // localStorage.setItem("subjects", JSON.stringify(subjects));
+    setSubjects(subjects.filter((subject) => subject.id !== id));
   }
+
   return (
     <div>
       <ul>
         {subjects.map((element) => (
           <li key={element.id}>
-            <span> Subject: </span>
-            {element.name} <span>Credit Hours: </span>
+            <span>Subject: </span> {element.name} <span>Credit Hours: </span>
             {element.hours} <span>Grade: </span> {element.gpa}
-            {console.log(element.id)}
             <button
               className="removeSubject"
               onClick={() => handleRemove(element.id)}
@@ -382,7 +204,7 @@ function Display({ subjects, render, setSubjects }) {
       </ul>
       {subjects.length > 0 && (
         <p className="numSubjects">
-          Calculate <span>{subjects.length} </span>{" "}
+          Calculate <span>{subjects.length}</span>{" "}
           {render === 1 ? "Subject" : "Subjects"}
         </p>
       )}
@@ -392,17 +214,17 @@ function Display({ subjects, render, setSubjects }) {
 
 function Calculate({ subjects, setSubjects, setRender }) {
   const [gpa, setGpa] = useState(0);
+
   function handleClick(e) {
     e.preventDefault();
     let totalCredits = 0;
     let factors = 0;
     for (let i = 0; i < subjects.length; i++) {
       factors += subjects[i].gpa * subjects[i].hours;
-      totalCredits += parseInt(subjects[i].hours);
+      totalCredits += subjects[i].hours;
     }
     let gpaCalc = factors / totalCredits;
-    let roundedNumber = parseFloat(gpaCalc.toFixed(2));
-    setGpa(roundedNumber);
+    setGpa(parseFloat(gpaCalc.toFixed(2)));
   }
 
   function handleReset(e) {
@@ -410,9 +232,11 @@ function Calculate({ subjects, setSubjects, setRender }) {
     setSubjects([]);
     setRender(0);
     setGpa(0);
-    // localStorage.removeItem("subjects");
+    localStorage.removeItem("subjects");
   }
-  if (subjects.length === 0) return;
+
+  if (subjects.length === 0) return null;
+
   return (
     <div>
       <button onClick={handleClick} className="calculate">
@@ -426,15 +250,15 @@ function Calculate({ subjects, setSubjects, setRender }) {
         {gpa === 0
           ? ""
           : gpa < 1
-          ? "Too geeky, over Qualified for jobs and probably won't get a job."
+          ? "Too geeky, over qualified for jobs and probably won't get one."
           : gpa < 1.31
           ? "Try enjoying life!"
           : gpa < 2
           ? "You have the perfect balance in life!"
           : gpa < 2.7
-          ? "Do you know that it's ok to not even include your gpa in your CV?"
+          ? "You might want to skip the GPA on your CV 😉"
           : gpa < 3.5
-          ? "You are enjoying life too much, maintain the balance."
+          ? "Enjoying life a bit much, huh?"
           : "Bruh go study now!!!!"}
       </p>
     </div>
